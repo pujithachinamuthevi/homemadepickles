@@ -1,0 +1,41 @@
+{% extends 'admin_base.html' %}
+{% block title %}Orders{% endblock %}
+{% block page_title %}All Orders{% endblock %}
+{% block content %}
+<div class="admin-card">
+  <div class="table-responsive">
+    <table class="table admin-table mb-0">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Email</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td><strong>#{{ order.id }}</strong></td>
+          <td>{{ order.user_name }}</td>
+          <td><small>{{ order.user_email }}</small></td>
+          <td>₹{{ "%.2f"|format(order.total_price) }}</td>
+          <td><span class="badge-status badge-{{ order.status.lower() }}">{{ order.status }}</span></td>
+          <td>{{ order.order_date[:10] }}</td>
+          <td>
+            <a href="{{ url_for('admin_order_detail', oid=order.id) }}" class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-eye"></i> View
+            </a>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="text-center text-muted py-4">No orders yet</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

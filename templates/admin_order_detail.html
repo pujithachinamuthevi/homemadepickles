@@ -1,0 +1,54 @@
+{% extends 'admin_base.html' %}
+{% block title %}Order #{{ order.id }}{% endblock %}
+{% block page_title %}Order #{{ order.id }} Details{% endblock %}
+{% block content %}
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="admin-card">
+      <div class="admin-card-header"><h6>Order Items</h6></div>
+      <div class="table-responsive">
+        <table class="table admin-table mb-0">
+          <thead><tr><th>Product</th><th>Qty</th><th>Unit Price</th><th>Subtotal</th></tr></thead>
+          <tbody>
+            {% for item in items %}
+            <tr>
+              <td>{{ '🥒' if 'Pickle' in item.product_name else '🍿' }} {{ item.product_name }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>₹{{ "%.2f"|format(item.price) }}</td>
+              <td>₹{{ "%.2f"|format(item.price * item.quantity) }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr><td colspan="3" class="text-end"><strong>Total</strong></td>
+            <td><strong class="text-primary">₹{{ "%.2f"|format(order.total_price) }}</strong></td></tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="admin-card">
+      <div class="admin-card-header"><h6>Order Info</h6></div>
+      <div class="p-3">
+        <p><strong>Customer:</strong> {{ order.user_name }}</p>
+        <p><strong>Email:</strong> {{ order.user_email }}</p>
+        <p><strong>Date:</strong> {{ order.order_date[:16] }}</p>
+        <p><strong>Status:</strong> <span class="badge-status badge-{{ order.status.lower() }}">{{ order.status }}</span></p>
+        <hr>
+        <form method="POST" action="{{ url_for('update_order_status', oid=order.id) }}">
+          <label class="form-label fw-semibold">Update Status</label>
+          <select name="status" class="form-select mb-2">
+            <option value="Pending" {% if order.status == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Processing" {% if order.status == 'Processing' %}selected{% endif %}>Processing</option>
+            <option value="Shipped" {% if order.status == 'Shipped' %}selected{% endif %}>Shipped</option>
+            <option value="Delivered" {% if order.status == 'Delivered' %}selected{% endif %}>Delivered</option>
+            <option value="Cancelled" {% if order.status == 'Cancelled' %}selected{% endif %}>Cancelled</option>
+          </select>
+          <button type="submit" class="btn btn-primary w-100">Update Status</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

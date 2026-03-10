@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% block title %}Home Made Pickles & Snacks – Taste the Best{% endblock %}
+{% block content %}
+
+<!-- Hero Carousel -->
+<section class="hero-section">
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="hero-slide slide-1">
+          <div class="container">
+            <div class="hero-content">
+              <span class="hero-badge animate-badge">🫙 Homemade Goodness</span>
+              <h1 class="hero-title">Authentic Homemade<br><em>Pickles & Snacks</em></h1>
+              <p class="hero-subtitle">Grandmother's secret recipes, bottled with love.<br>100% natural ingredients, zero preservatives.</p>
+              <div class="hero-actions">
+                <a href="{{ url_for('products_page') }}" class="btn btn-hero-primary">Shop Now <i class="fas fa-arrow-right ms-2"></i></a>
+                <a href="{{ url_for('about') }}" class="btn btn-hero-outline">Our Story</a>
+              </div>
+              <div class="hero-stats">
+                <div class="stat"><strong>50+</strong><span>Recipes</span></div>
+                <div class="stat"><strong>2000+</strong><span>Happy Customers</span></div>
+                <div class="stat"><strong>100%</strong><span>Natural</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="hero-slide slide-2">
+          <div class="container">
+            <div class="hero-content">
+              <span class="hero-badge animate-badge">🌶️ Pickle Collection</span>
+              <h1 class="hero-title">Tangy, Spicy &<br><em>Absolutely Delicious</em></h1>
+              <p class="hero-subtitle">From classic mango to exotic gongura — explore our premium pickle range crafted with traditional spices.</p>
+              <div class="hero-actions">
+                <a href="{{ url_for('products_page', category='Pickles') }}" class="btn btn-hero-primary">Explore Pickles <i class="fas fa-arrow-right ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="hero-slide slide-3">
+          <div class="container">
+            <div class="hero-content">
+              <span class="hero-badge animate-badge">🍿 Snack Time</span>
+              <h1 class="hero-title">Crispy, Crunchy &<br><em>Irresistibly Good</em></h1>
+              <p class="hero-subtitle">Freshly made murukku, banana chips, laddu and more — the perfect companions for every tea break.</p>
+              <div class="hero-actions">
+                <a href="{{ url_for('products_page', category='Snacks') }}" class="btn btn-hero-primary">Browse Snacks <i class="fas fa-arrow-right ms-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
+
+<!-- Trust Badges -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-6 col-md-3 trust-item">
+        <i class="fas fa-leaf"></i>
+        <div><strong>100% Natural</strong><small>No preservatives</small></div>
+      </div>
+      <div class="col-6 col-md-3 trust-item">
+        <i class="fas fa-truck"></i>
+        <div><strong>Fast Delivery</strong><small>2-3 business days</small></div>
+      </div>
+      <div class="col-6 col-md-3 trust-item">
+        <i class="fas fa-shield-alt"></i>
+        <div><strong>Secure Payment</strong><small>100% safe & secure</small></div>
+      </div>
+      <div class="col-6 col-md-3 trust-item">
+        <i class="fas fa-undo"></i>
+        <div><strong>Easy Returns</strong><small>Hassle-free policy</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Shop by Category</h2>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-5">
+        <a href="{{ url_for('products_page', category='Pickles') }}" class="category-card pickles-card">
+          <div class="category-emoji">🥒</div>
+          <div class="category-info">
+            <h3>Pickles</h3>
+            <p>Mango · Lemon · Garlic · Gongura</p>
+            <span class="cat-btn">Explore <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-5">
+        <a href="{{ url_for('products_page', category='Snacks') }}" class="category-card snacks-card">
+          <div class="category-emoji">🍿</div>
+          <div class="category-info">
+            <h3>Snacks</h3>
+            <p>Murukku · Chips · Mixture · Laddu</p>
+            <span class="cat-btn">Explore <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section-padding bg-light-warm">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">Customer Favourites</span>
+      <h2 class="section-title">Featured Products</h2>
+    </div>
+    <div class="row g-4">
+      {% for product in featured %}
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="product-card h-100">
+          <div class="product-img-wrap">
+            <div class="product-emoji">{{ '🥒' if product.category == 'Pickles' else '🍿' }}</div>
+            <div class="product-category-tag">{{ product.category }}</div>
+          </div>
+          <div class="product-body">
+            <h6 class="product-name">{{ product.name }}</h6>
+            <p class="product-desc">{{ product.description[:60] }}...</p>
+            <div class="product-footer">
+              <span class="product-price">₹{{ "%.2f"|format(product.price) }}</span>
+              <form method="POST" action="{{ url_for('add_to_cart') }}" class="d-inline">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="btn btn-add-cart btn-sm"><i class="fas fa-cart-plus"></i></button>
+              </form>
+            </div>
+            <a href="{{ url_for('product_detail', pid=product.id) }}" class="btn btn-view-detail w-100 mt-2">View Details</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+      <a href="{{ url_for('products_page') }}" class="btn btn-primary btn-lg px-5">View All Products <i class="fas fa-arrow-right ms-2"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section-padding">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="why-us-visual">
+          <div class="pickle-jar-display">
+            <div class="jar-emoji main-jar">🫙</div>
+            <div class="jar-float float-1">🌶️</div>
+            <div class="jar-float float-2">🍋</div>
+            <div class="jar-float float-3">🧄</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <span class="section-label">Why Us</span>
+        <h2 class="section-title text-start">Taste the Tradition,<br>Feel the Difference</h2>
+        <div class="feature-list mt-4">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-heart"></i></div>
+            <div><h6>Made with Love</h6><p>Every batch prepared by hand using time-tested family recipes.</p></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+            <div><h6>Farm Fresh Ingredients</h6><p>We source directly from local farmers for maximum freshness.</p></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-ban"></i></div>
+            <div><h6>No Artificial Additives</h6><p>Pure spices, cold-pressed oils — nothing artificial, ever.</p></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-award"></i></div>
+            <div><h6>Quality Guaranteed</h6><p>Each product quality checked before it leaves our kitchen.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section-padding reviews-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-label">What People Say</span>
+      <h2 class="section-title">Customer Reviews</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"The Mango Pickle is absolutely divine! Takes me back to grandma's kitchen. Will order again!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">P</div>
+            <div><strong>Priya Sharma</strong><small>Hyderabad</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="review-card featured-review">
+          <div class="review-stars">★★★★★</div>
+          <p>"Best murukku I've ever tasted! Crispy, perfectly spiced and fresh. My whole family loved it!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">R</div>
+            <div><strong>Rahul Verma</strong><small>Bangalore</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Gongura pickle is out of this world! Authentic taste, quick delivery. Highly recommend!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">A</div>
+            <div><strong>Ananya Reddy</strong><small>Chennai</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="container text-center">
+    <h3>🍋 Get Seasonal Specials & Exclusive Discounts</h3>
+    <p class="text-muted">Subscribe to our newsletter and be the first to know about new flavors!</p>
+    <div class="newsletter-form">
+      <input type="email" class="form-control" placeholder="Your email address">
+      <button class="btn btn-primary">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

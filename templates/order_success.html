@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Order Placed! – Home Made Pickles & Snacks{% endblock %}
+{% block content %}
+<div class="container section-padding text-center">
+  <div class="success-box">
+    <div class="success-icon">✅</div>
+    <h1>Order Placed Successfully!</h1>
+    <p class="lead">Thank you for your order! 🎉<br>Your order <strong>#{{ oid }}</strong> has been received.</p>
+    <p class="text-muted">We'll pack it fresh and deliver it to you within 2-3 business days.</p>
+    <div class="mt-4 d-flex gap-3 justify-content-center flex-wrap">
+      <a href="{{ url_for('my_orders') }}" class="btn btn-primary btn-lg">View My Orders</a>
+      <a href="{{ url_for('products_page') }}" class="btn btn-outline-primary btn-lg">Continue Shopping</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

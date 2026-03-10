@@ -1,0 +1,168 @@
+:root {
+  --primary: #c8450a;
+  --primary-dark: #a03508;
+  --accent: #e8a730;
+  --dark: #1a1208;
+  --sidebar-bg: #1a1208;
+  --sidebar-text: rgba(255,255,255,0.7);
+  --sidebar-active: rgba(200,69,10,0.9);
+  --bg: #f5f0eb;
+  --card-bg: #fff;
+  --border: #e8d8c4;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body.admin-body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: #2d2010;
+}
+
+.admin-wrapper { display: flex; min-height: 100vh; }
+
+/* ─── Sidebar ────────────────────────────────────────────────── */
+.admin-sidebar {
+  width: 240px;
+  background: var(--sidebar-bg);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.brand-icon { font-size: 1.8rem; }
+.brand-title { color: #fff; font-weight: 700; font-size: 0.9rem; line-height: 1.2; }
+.brand-sub { color: rgba(255,255,255,0.4); font-size: 0.72rem; }
+.sidebar-nav { display: flex; flex-direction: column; padding: 12px 12px; flex: 1; }
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  transition: all 0.2s;
+}
+.sidebar-link i { width: 18px; text-align: center; font-size: 0.9rem; }
+.sidebar-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.sidebar-link.active { background: var(--primary); color: #fff; }
+.sidebar-divider { border-color: rgba(255,255,255,0.08); margin: 12px 0; }
+
+/* ─── Main ───────────────────────────────────────────────────── */
+.admin-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.admin-topbar {
+  background: #fff;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+.admin-topbar h5 { font-family: 'Nunito', sans-serif; font-weight: 700; }
+.admin-content { padding: 28px; flex: 1; overflow-y: auto; }
+
+/* ─── Stats ──────────────────────────────────────────────────── */
+.stat-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-3px); }
+.stat-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.stat-products .stat-icon { background: #e8f4fd; color: #0e6ebd; }
+.stat-orders .stat-icon { background: #fef3e2; color: #c8450a; }
+.stat-users .stat-icon { background: #eaf5ec; color: #1d7a34; }
+.stat-revenue .stat-icon { background: #fde8f5; color: #9c27b0; }
+.stat-number { font-size: 1.6rem; font-weight: 800; color: #1a1208; }
+.stat-label { color: #7a6850; font-size: 0.82rem; font-weight: 600; }
+
+/* ─── Admin Cards ────────────────────────────────────────────── */
+.admin-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.admin-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-card-header h6 { font-weight: 700; font-size: 0.95rem; margin: 0; }
+
+/* ─── Table ──────────────────────────────────────────────────── */
+.admin-table { font-size: 0.88rem; }
+.admin-table thead th { background: #fdf8f2; font-weight: 700; color: #7a6850; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); padding: 12px 16px; }
+.admin-table tbody td { padding: 12px 16px; vertical-align: middle; border-bottom: 1px solid var(--border); }
+.admin-table tbody tr:last-child td { border-bottom: none; }
+.admin-table tbody tr:hover td { background: #fdf8f2; }
+
+/* ─── Status Badges ──────────────────────────────────────────── */
+.badge-status { padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; display: inline-block; }
+.badge-pending { background: #fff3cd; color: #856404; }
+.badge-processing { background: #cff4fc; color: #055160; }
+.badge-shipped { background: #d1ecf1; color: #0c5460; }
+.badge-delivered { background: #d4edda; color: #155724; }
+.badge-cancelled { background: #f8d7da; color: #721c24; }
+
+/* ─── Auth (used in admin login) ─────────────────────────────── */
+.auth-card { background: #fff; border-radius: 24px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+.auth-header { text-align: center; margin-bottom: 28px; }
+.auth-logo { font-size: 3rem; display: block; margin-bottom: 12px; }
+.auth-header h2 { font-size: 1.6rem; font-weight: 800; }
+.auth-header p { color: #7a6850; }
+.auth-input { border-radius: 10px; border: 1.5px solid #e8d8c4; padding: 12px 14px; }
+.auth-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(200,69,10,0.1); }
+
+/* ─── User Avatar ────────────────────────────────────────────── */
+.user-avatar {
+  width: 34px; height: 34px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-sidebar { width: 200px; }
+  .admin-content { padding: 16px; }
+}

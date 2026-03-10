@@ -1,0 +1,47 @@
+{% extends 'admin_base.html' %}
+{% block title %}Manage Products{% endblock %}
+{% block page_title %}Manage Products{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-end mb-3">
+  <a href="{{ url_for('add_product') }}" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Add Product</a>
+</div>
+<div class="admin-card">
+  <div class="table-responsive">
+    <table class="table admin-table mb-0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in products %}
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>
+            <div class="d-flex align-items-center gap-2">
+              <span>{{ '🥒' if p.category == 'Pickles' else '🍿' }}</span>
+              <strong>{{ p.name }}</strong>
+            </div>
+          </td>
+          <td><span class="badge bg-{{ 'success' if p.category == 'Pickles' else 'warning text-dark' }}">{{ p.category }}</span></td>
+          <td>₹{{ "%.2f"|format(p.price) }}</td>
+          <td>
+            <a href="{{ url_for('edit_product', pid=p.id) }}" class="btn btn-sm btn-outline-primary me-1">
+              <i class="fas fa-edit"></i> Edit
+            </a>
+            <a href="{{ url_for('delete_product', pid=p.id) }}" class="btn btn-sm btn-outline-danger"
+               onclick="return confirm('Delete {{ p.name }}?')">
+              <i class="fas fa-trash"></i> Delete
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

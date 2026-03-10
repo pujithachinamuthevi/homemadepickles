@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us – Home Made Pickles & Snacks{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div class="container"><h1>Contact Us</h1><p>We'd love to hear from you!</p></div>
+</div>
+<div class="container section-padding">
+  <div class="row g-5">
+    <div class="col-lg-5">
+      <h3 class="mb-4">Get in Touch</h3>
+      <div class="contact-info-card">
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h6>Visit Us</h6>
+            <p>12, Old Market Lane, Hyderabad, Telangana - 500001</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <h6>Call Us</h6>
+            <p>+91 98765 43210</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h6>Email Us</h6>
+            <p>hello@homemadepickles.in</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h6>Working Hours</h6>
+            <p>Monday – Saturday: 9AM to 6PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="contact-form-box">
+        <h3 class="mb-4">Send a Message</h3>
+        <form method="POST">
+          <div class="mb-3">
+            <label class="form-label">Your Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Full name" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label">Message</label>
+            <textarea name="message" class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg px-5">
+            <i class="fas fa-paper-plane me-2"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

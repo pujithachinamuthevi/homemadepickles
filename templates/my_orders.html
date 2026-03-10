@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}My Orders – Home Made Pickles & Snacks{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div class="container"><h1>My Orders</h1></div>
+</div>
+<div class="container section-padding">
+  {% if orders %}
+  <div class="orders-list">
+    {% for order in orders %}
+    <div class="order-card">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div>
+          <h6 class="mb-1">Order #{{ order.id }}</h6>
+          <small class="text-muted">{{ order.order_date[:10] }} · {{ order.item_count }} item(s)</small>
+        </div>
+        <div class="text-center">
+          <span class="order-status status-{{ order.status.lower() }}">{{ order.status }}</span>
+        </div>
+        <div class="text-end">
+          <strong class="text-primary">₹{{ "%.2f"|format(order.total_price) }}</strong>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="text-center py-5">
+    <div style="font-size:4rem">📦</div>
+    <h4>No orders yet</h4>
+    <a href="{{ url_for('products_page') }}" class="btn btn-primary mt-3">Start Shopping</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
